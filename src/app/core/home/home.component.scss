@@ -1,0 +1,31 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  .example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+  background: #ffe600;
+}
+
+table {
+  width: 100%;
+}
+
+.custom-table {
+  width: 45%;
+  margin-top: 50px;
+  height: 488px;
+  overflow: auto;
+}
+
+.custom-header{
+  font-style: unset;
+    font-size: x-large;
+    font-weight: lighter;
+}
