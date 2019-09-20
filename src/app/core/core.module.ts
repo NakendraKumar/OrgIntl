@@ -1,6 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {
   HTTP_INTERCEPTORS,
   HttpClient,
@@ -13,7 +13,13 @@ import { RouteReusableStrategy } from './route-reusable-strategy';
 import { HttpService } from './http/http.service';
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule, TranslateModule, RouterModule, MatFormFieldModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    TranslateModule,
+    RouterModule,
+    MatFormFieldModule
+  ],
   providers: [
     {
       provide: HttpClient,

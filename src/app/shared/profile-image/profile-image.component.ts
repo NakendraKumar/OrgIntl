@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-
 @Component({
   selector: 'app-profile-image',
   templateUrl: './profile-image.component.html',
@@ -10,7 +9,7 @@ export class ProfileImageComponent implements OnInit {
   profilePic: any;
   @Input() userId: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.showUserPicture();

@@ -1,13 +1,13 @@
 .example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-  .example-button-row button,
+.example-container > * {
+  width: 100%;
+}
+
+.example-button-row button,
 .example-button-row a {
   margin-right: 8px;
   background: #ffe600;
@@ -19,13 +19,21 @@ table {
 
 .custom-table {
   width: 45%;
-  margin-top: 50px;
-  height: 488px;
-  overflow: auto;
+  margin-top: 30px;
+  height: calc(100vh - 408px);
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
 }
 
-.custom-header{
+.custom-table::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.custom-header {
   font-style: unset;
-    font-size: x-large;
-    font-weight: lighter;
+  font-size: x-large;
+  font-weight: lighter;
 }

@@ -4,8 +4,7 @@ import { LayoutComponent } from './shared';
 
 const routes: Routes = [
   // Fallback when no prior route is matched
-  { path: '',
-  component: LayoutComponent, }
+  { path: '', component: LayoutComponent }
 ];
 
 @NgModule({

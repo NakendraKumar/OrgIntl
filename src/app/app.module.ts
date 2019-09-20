@@ -5,7 +5,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { environment } from '@env/environment';
 import { CoreModule } from '@app/core';
@@ -29,9 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
     SharedModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
-  exports: [
-    MatFormFieldModule,
-  ],
+  exports: [MatFormFieldModule],
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]

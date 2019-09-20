@@ -1,38 +1,37 @@
 .user-block {
-    margin-right: 10px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  margin-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
-  
-  // .user-details {
-  //   margin-top: 30px;
-  // }
-  
-  .user-name {
-    color: #bbbbbb;
-    text-align: right;
-    font-size: 14px;
-    line-height: 15px;
-  }
-  
-  .user-designation {
-    color: #bbbbbb;
-    text-align: right;
-    font-size: 11px;
-    margin-top: 4px;
-  }
-  
-  .profile-holder {
-    width: 44px;
-    height: 42px;
-    border-radius: 50%;
-    padding-left: 10px;
 
-  }
-  
-  .user-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
+// .user-details {
+//   margin-top: 30px;
+// }
+
+.user-name {
+  color: #bbbbbb;
+  text-align: right;
+  font-size: 14px;
+  line-height: 15px;
+}
+
+.user-designation {
+  color: #bbbbbb;
+  text-align: right;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.profile-holder {
+  width: 44px;
+  height: 42px;
+  border-radius: 50%;
+  padding-left: 10px;
+}
+
+.user-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

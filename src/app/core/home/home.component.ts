@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-home',
@@ -10,52 +11,57 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   searchForm: FormGroup;
-  
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+
+  displayedColumns: string[] = ['orgkey', 'name', 'country', 'graph'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService) {}
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.searchForm = this.fb.group({
       companyName: ['', Validators.required],
-      country: [''],
+      country: ['']
     });
   }
 
   onSubmit(form: FormGroup) {
     console.log('Valid?', form.valid); // true or false
-    console.log('Name', form.value.companyName);
-    console.log('Email', form.value.country);
+    console.log('Company Name', form.value.companyName);
+    console.log('Country', form.value.country);
+    this.apiService.getData().subscribe(data => {
+      console.log('data', data);
+    });
+  }
+
+  showGraph(data: any) {
+    console.log('Graph data', data);
   }
 }
 
 export interface PeriodicElement {
+  orgkey: string;
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  country: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
+  { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' }
 ];
