@@ -11,9 +11,11 @@ import { ApiService } from '../../api.service';
 })
 export class HomeComponent implements OnInit {
   searchForm: FormGroup;
-
+  loader: false;
+  message: 'Fetching Data';
   displayedColumns: string[] = ['orgkey', 'name', 'country', 'graph'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource([]);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -31,9 +33,15 @@ export class HomeComponent implements OnInit {
     console.log('Valid?', form.valid); // true or false
     console.log('Company Name', form.value.companyName);
     console.log('Country', form.value.country);
-    this.apiService.getData().subscribe(data => {
-      console.log('data', data);
-    });
+    this.loader = true;
+    this.apiService
+      .getData(form.value.companyName, form.value.country)
+      .subscribe(data => {
+        this.loader = false;
+        console.log('data', data);
+        const { results } = data;
+        this.dataSource = results;
+      });
   }
 
   showGraph(data: any) {

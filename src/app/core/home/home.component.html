@@ -1,4 +1,4 @@
-<div>
+<div [ngClass]="{ blur_container: loader }">
   <div class="custom-header">
     Search for an Organization
   </div>
@@ -32,8 +32,8 @@
       </div>
     </div>
   </form>
-
-  <div class="custom-table mat-elevation-z8">
+  <app-loader [isLoading]="loader" [message]="message"></app-loader>
+  <div *ngIf="dataSource.length" class="custom-table mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
       <!-- Position Column -->
       <ng-container matColumnDef="orgkey">
@@ -66,5 +66,8 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+  </div>
+  <div *ngIf="!dataSource.length && !loader" class="no_data" role="alert">
+    No Data
   </div>
 </div>

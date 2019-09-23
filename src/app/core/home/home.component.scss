@@ -17,8 +17,12 @@ table {
   width: 100%;
 }
 
+.no_data {
+  margin-top: 40px;
+}
+
 .custom-table {
-  width: 45%;
+  width: 100%;
   margin-top: 30px;
   height: calc(100vh - 408px);
   overflow-y: scroll;
@@ -36,4 +40,8 @@ table {
   font-style: unset;
   font-size: x-large;
   font-weight: lighter;
+}
+
+.blur_container {
+  opacity: 0.5;
 }
