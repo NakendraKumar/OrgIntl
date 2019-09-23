@@ -6,7 +6,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import {
+  AuthenticationGuard,
+  MsAdalAngular6Module
+} from 'microsoft-adal-angular6';
 import { environment } from '@env/environment';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
@@ -18,6 +21,16 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     ServiceWorkerModule.register('./ngsw-worker.js', {
       enabled: environment.production
+    }),
+    MsAdalAngular6Module.forRoot({
+      tenant: environment.config.tenant,
+      clientId: environment.config.clientId,
+      redirectUri: window.location.origin,
+      endpoints: environment.config.endpoints,
+      navigateToLoginRequestUrl: false,
+      expireOffsetSeconds: 300,
+      cacheLocation: environment.config.cacheLocation,
+      postLogoutRedirectUri: environment.postLogoutRedirectUri
     }),
     FormsModule,
     HttpClientModule,
@@ -31,7 +44,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   exports: [MatFormFieldModule],
   declarations: [AppComponent],
-  providers: [],
+  providers: [AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Trusted data fabric</title>
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height initial-scale=1"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="./assets/css/logout.css"> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function(event) {
+        document.getElementById('logo').href = window.location.origin;
+        console.log(document.getElementById('logo'));
+      });
+    </script>
+    <style>
+      body {
+        font-family: 'EYInterstate', sans-serif, Arial;
+        font-size: 13px;
+      }
+      .header {
+        height: 90px;
+        background: #0e0e0e;
+        color: #ffffff;
+        display: flex;
+      }
+
+      .logo-box {
+        width: 20%;
+        padding: 10px 10px 20px 20px;
+      }
+
+      .logo-box img {
+        height: 35px;
+      }
+
+      .tabs-box {
+        width: 60%;
+      }
+
+      .profile-box {
+        width: 20%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 30px;
+      }
+
+      .app-name {
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 17px;
+      }
+
+      .msg-wraper {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+      }
+
+      .error-icon {
+        color: red;
+        font-size: 16px;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-box">
+        <a id="logo"><img src="../../../assets/images/EYLogo.svg"/></a>
+        <div class="app-name" translate>Organisation Intelligence</div>
+      </div>
+
+      <div class="tabs-box"></div>
+
+      <div class="profile-box">
+        <div class="user-name">Welcome Guest</div>
+      </div>
+    </header>
+    <div class="msg-wraper">
+      <i class="fas fa-exclamation-circle error-icon"></i>
+      <span>You have been logged out. Click on EY logo to log in</span>
+    </div>
+  </body>
+</html>
