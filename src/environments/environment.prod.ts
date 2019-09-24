@@ -7,10 +7,23 @@
 import { env } from './.env';
 
 export const environment = {
-  production: true,
-  hmr: false,
-  version: env.npm_package_version,
-  serverUrl: 'https://api.chucknorris.io',
+  production: false,
+  hmr: true,
+  version: env.npm_package_version + '-dev',
+  serverUrl: '/api',
   defaultLanguage: 'en-US',
-  supportedLanguages: ['en-US', 'fr-FR']
+  supportedLanguages: ['en-US', 'fr-FR'],
+  APPName: 'Organisation Intelligence',
+  CoreApiDomain: 'https://orgintel-dev-cd.sbp.eyclienthub.com',
+  CoreApiPrefix: '/api',
+  config: {
+    tenant: 'eygs.onmicrosoft.com',
+    clientId: 'e8680160-3b27-4c78-8c0e-6a6a1e6ca2c1',
+    cacheLocation: 'sessionStorage',
+    endpoints: {
+      'https:// orgintel-dev-cd.sbp.eyclienthub.com':
+        'e8680160-3b27-4c78-8c0e-6a6a1e6ca2c1'
+    }
+  },
+  postLogoutRedirectUri: 'http://localhost:4200/logout.html'
 };

@@ -1,12 +1,12 @@
 <header class="header">
   <div class="logo-box">
     <a><img src="../../../assets/images/EYLogo.svg"/></a>
-    <div class="app-name" translate>ORGANISATION INTELLIGENCE</div>
+    <div class="app-name" translate>{{ appName }}</div>
   </div>
 
   <div class="profile-box">
-    <app-user-profile></app-user-profile>
-    <div class="signout" title="Logout" id="logout" (click)="logout($event)">
+    <app-user-profile [userName]="userName"></app-user-profile>
+    <div class="signout" title="Logout" id="logout" (click)="logout()">
       <i class="fas fa-sign-out-alt"></i>
     </div>
   </div>

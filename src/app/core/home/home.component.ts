@@ -11,9 +11,12 @@ import { ApiService } from '../../api.service';
 })
 export class HomeComponent implements OnInit {
   searchForm: FormGroup;
-
+  loader: boolean = false;
+  results: any[];
+  message: 'Fetching Data';
   displayedColumns: string[] = ['orgkey', 'name', 'country', 'graph'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource([]);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -31,9 +34,14 @@ export class HomeComponent implements OnInit {
     console.log('Valid?', form.valid); // true or false
     console.log('Company Name', form.value.companyName);
     console.log('Country', form.value.country);
-    this.apiService.getData().subscribe(data => {
-      console.log('data', data);
-    });
+    this.loader = true;
+    this.apiService
+      .getData(form.value.companyName, form.value.country)
+      .subscribe(data => {
+        this.loader = false;
+        console.log('data', data);
+        this.dataSource = data['results'];
+      });
   }
 
   showGraph(data: any) {
@@ -41,27 +49,27 @@ export class HomeComponent implements OnInit {
   }
 }
 
-export interface PeriodicElement {
-  orgkey: string;
-  name: string;
-  country: string;
-}
+// export interface PeriodicElement {
+//   orgkey: string;
+//   name: string;
+//   country: string;
+// }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
-  { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' }
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Hydrogen', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Helium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Lithium', country: 'Hydrogen' },
+//   { orgkey: 'Hydrogen', name: 'Beryllium', country: 'Hydrogen' }
+// ];
