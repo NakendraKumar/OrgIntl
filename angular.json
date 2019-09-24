@@ -28,7 +28,11 @@
               "src/robots.txt",
               "src/manifest.json",
               "src/assets",
+<<<<<<< HEAD
+              "src/graph.json"
+=======
               "src/logout.html"
+>>>>>>> 02977ee40b08a412a8e4334a4b4a1557b14ec0a1
             ],
             "styles": ["src/main.scss"],
             "scripts": []
