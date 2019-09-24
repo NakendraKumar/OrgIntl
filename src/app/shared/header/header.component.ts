@@ -14,7 +14,9 @@ export class HeaderComponent implements OnInit {
   userName: string = jwt_decode(sessionStorage.getItem('adal.idtoken')).name;
   constructor(private adalSvc: MsAdalAngular6Service) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('x', jwt_decode(sessionStorage.getItem('adal.idtoken')));
+  }
 
   logout() {
     this.adalSvc.logout();
