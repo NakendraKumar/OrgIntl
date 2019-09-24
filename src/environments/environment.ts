@@ -29,7 +29,7 @@ export const environment = {
         'e8680160-3b27-4c78-8c0e-6a6a1e6ca2c1'
     }
   },
-  postLogoutRedirectUri: 'https://localhost:4200.com/logout.html'
+  postLogoutRedirectUri: 'http://localhost:4200/logout.html'
 };
 
 /*
