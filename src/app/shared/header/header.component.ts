@@ -11,7 +11,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class HeaderComponent implements OnInit {
   appName: string = environment.APPName;
-  userName: string = jwt_decode(sessionStorage.getItem('adal.idtoken')).name;
+  userName: string = jwt_decode(sessionStorage.getItem('adal.idtoken'))['name'];
   constructor(private adalSvc: MsAdalAngular6Service) {}
 
   ngOnInit() {

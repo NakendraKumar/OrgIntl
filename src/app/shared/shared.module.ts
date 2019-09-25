@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { UserProfileComponent } from './header/user-profile/user-profile.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { HomeComponent } from '../core/home/home.component';
+import { GraphComponent } from '../core/graph/graph.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { HomeComponent } from '../core/home/home.component';
     FooterComponent,
     UserProfileComponent,
     ProfileImageComponent,
-    HomeComponent
+    HomeComponent,
+    GraphComponent
   ],
   exports: [LoaderComponent]
 })

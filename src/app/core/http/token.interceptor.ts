@@ -33,7 +33,7 @@ export class TokenInterceptor implements HttpInterceptor {
     let token = '';
 
     let TokenResource = '';
-
+    console.log('this.adalSvc0', this.adalSvc);
     if (!/^(http|https):/i.test(request.url)) {
       request = request.clone({
         url:
@@ -60,6 +60,7 @@ export class TokenInterceptor implements HttpInterceptor {
     }
     console.log('token', token);
     console.log('TokenResource', TokenResource);
+    console.log('this.adalSvc', this.adalSvc);
     return next.handle(request).pipe(
       catchError((e: HttpErrorResponse) => {
         if (e.status === 401 && e.url && e.url.indexOf(TokenResource) >= 0) {
@@ -79,6 +80,7 @@ export class TokenInterceptor implements HttpInterceptor {
           // if (environment.toast) {
           //   this.toastr.error(e.message, 'Request error');
           // }
+          console.log('this.adalSv111c', this.adalSvc);
           if (!this.adalSvc.isAuthenticated) {
             this.router.navigate(['']);
           }
