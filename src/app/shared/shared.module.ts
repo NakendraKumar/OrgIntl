@@ -40,6 +40,13 @@ import { GraphComponent } from '../core/graph/graph.component';
     HomeComponent,
     GraphComponent
   ],
-  exports: [LoaderComponent]
+  exports: [
+    LoaderComponent,
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    GraphComponent
+  ]
 })
 export class SharedModule {}

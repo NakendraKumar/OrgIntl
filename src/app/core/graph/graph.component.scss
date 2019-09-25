@@ -1,34 +1,41 @@
-.graph {
-  background-color: #e6e6e6;
+#graph {
+  div {
+    &:nth-child(2) {
+      svg {
+        g {
+          g {
+            &:nth-child(2) {
+              g {
+                &:nth-child(2) {
+                  g {
+                    g {
+                      &:nth-child(3) {
+                        display: none;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-// svg {
-//   width: 1000px;
-//   height: 1000px;
-// }
-
-// .node {
-//   pointer-events: all;
-//   cursor: pointer;
-//   z-index: 1000;
-// }
-
-// .node text {
-//   font: 8px sans-serif;
-// }
-
-circle .node {
-  fill: rgb(197, 25, 25) !important;
-  /*   stroke: steelblue; */
-  stroke-width: 3px;
+#graph div {
+  &:nth-child(2) {
+    svg {
+      display: none;
+    }
+  }
 }
 
-.node text {
-  font: 12px sans-serif;
-}
-
-.link {
-  fill: none;
-  stroke: rgb(17, 7, 7);
-  /*   stroke-width: 2px; */
+.hider {
+  width: 68px;
+  height: 42px;
+  position: relative;
+  top: -26px;
+  background: #fbfbfb;
 }

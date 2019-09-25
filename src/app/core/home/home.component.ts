@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../api.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,7 +20,11 @@ export class HomeComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {}
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -34,7 +38,7 @@ export class HomeComponent implements OnInit {
     console.log('Valid?', form.valid); // true or false
     console.log('Company Name', form.value.companyName);
     console.log('Country', form.value.country);
-    this.loader = false;
+    this.loader = true;
     this.apiService
       .getData(form.value.companyName, form.value.country)
       .subscribe(
@@ -51,8 +55,7 @@ export class HomeComponent implements OnInit {
   }
 
   showGraph(data: any) {
-    console.log('grpa');
-    // graphFunc.update();
+    this.router.navigate([`/graph`]);
     console.log('Graph data', data);
   }
 }
