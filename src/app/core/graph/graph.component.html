@@ -1,2 +1,4 @@
-<div id="graph"></div>
-<div class="hider"></div>
+<div [ngClass]="{ blur_container: loader }">
+  <div id="graph"></div>
+  <app-loader [isLoading]="loader" [message]="message"></app-loader>
+</div>

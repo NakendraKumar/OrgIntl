@@ -18,4 +18,14 @@ export class ApiService {
       { headers: headers }
     );
   }
+
+  public getChildren(orgKey: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.httpClient.get(
+      `${this.apiURL}/${orgKey}/OrgHeirarchy/Children`,
+      { headers: headers }
+    );
+  }
 }
