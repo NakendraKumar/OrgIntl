@@ -33,7 +33,10 @@
     </div>
   </form>
   <app-loader [isLoading]="loader" [message]="message"></app-loader>
-  <div *ngIf="dataSource.length" class="custom-table mat-elevation-z8">
+  <div
+    *ngIf="dataSource.length"
+    class="custom-table mat-elevation-z8"
+  >
     <table mat-table [dataSource]="dataSource">
       <!-- Position Column -->
       <ng-container matColumnDef="orgkey">
@@ -67,7 +70,12 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </div>
-  <div *ngIf="!dataSource.length && !loader" class="no_data" role="alert">
+  <div
+    *ngIf="dataSource.length && !loader"
+    class="no_data"
+    role="alert"
+  >
     No Data
   </div>
 </div>
+<!-- <app-graph></app-graph> -->

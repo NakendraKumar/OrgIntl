@@ -11,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { RouteReusableStrategy } from './route-reusable-strategy';
 import { HttpService } from './http/http.service';
-import { GraphComponent } from './graph/graph.component';
+// import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
   imports: [
@@ -31,7 +31,7 @@ import { GraphComponent } from './graph/graph.component';
       useClass: RouteReusableStrategy
     }
   ],
-  declarations: [GraphComponent]
+  declarations: []
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

@@ -16,6 +16,6 @@ export class ProfileImageComponent implements OnInit {
   }
 
   showUserPicture() {
-    this.profilePic = './avatar.png';
+    // this.profilePic = '@assets/images/avatar.jpg';
   }
 }

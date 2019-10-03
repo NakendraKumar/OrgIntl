@@ -1,7 +1,19 @@
 {
-  "APP_NAME": "AngularBoilerPlate",
-  "About": "About",
-  "Hello world !": "Hello world !",
+  "APP_NAME": "Trusted data fabric",
+  "HOME_NAV_LABEL": "Data actions",
+  "Find": "Find",
+  "Upload": "Upload",
+  "Request": "Request",
+  "Govern": "Govern",
+  "Collaborate": "Collaborate",
+  "Pool": "Pool",
+  "FindDesc": "Search or find data",
+  "UploadDesc": "Upload dataset into fabric",
+  "RequestDesc": "Submit request for data access",
+  "GovernDesc": "Inform data governance process",
+  "CollaborateDesc": "Data interaction activities",
+  "PoolDesc": "Formalize data container",
+  "Copyright": "EYGM Limited. All rights reserved.",
   "Home": "Home",
-  "Version": "Version"
+  "MyEngagements": "My engagements"
 }

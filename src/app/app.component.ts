@@ -75,6 +75,6 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   ngOnDestroy() {
-    this.i18nService.destroy();
+    // this.i18nService.destroy();
   }
 }

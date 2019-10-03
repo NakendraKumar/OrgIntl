@@ -18,7 +18,8 @@ export interface HttpCacheEntry {
   providedIn: 'root'
 })
 export class HttpCacheService {
-  private cachedData: { [key: string]: HttpCacheEntry } = {};
+
+  private cachedData: { [key: string]: HttpCacheEntry; } = {};
   private storage: Storage | null = null;
 
   constructor() {
@@ -100,26 +101,19 @@ export class HttpCacheService {
    */
   setPersistence(persistence?: 'local' | 'session') {
     this.cleanCache();
-    this.storage =
-      persistence === 'local' || persistence === 'session'
-        ? window[persistence + 'Storage']
-        : null;
+    this.storage = persistence === 'local' || persistence === 'session' ? window[persistence + 'Storage'] : null;
     this.loadCacheData();
   }
 
   private saveCacheData() {
     if (this.storage) {
-      this.storage.setItem(
-        cachePersistenceKey,
-        JSON.stringify(this.cachedData)
-      );
+      this.storage.setItem(cachePersistenceKey, JSON.stringify(this.cachedData));
     }
   }
 
   private loadCacheData() {
-    const data = this.storage
-      ? this.storage.getItem(cachePersistenceKey)
-      : null;
+    const data = this.storage ? this.storage.getItem(cachePersistenceKey) : null;
     this.cachedData = data ? JSON.parse(data) : {};
   }
+
 }

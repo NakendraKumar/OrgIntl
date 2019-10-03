@@ -3,7 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../api.service';
-
+import { Router } from '@angular/router';
+import { ShareDataService } from '../../share-data.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,6 +12,7 @@ import { ApiService } from '../../api.service';
 })
 export class HomeComponent implements OnInit {
   searchForm: FormGroup;
+  orgkey: any;
   loader: boolean = false;
   results: any[];
   message: 'Fetching Data';
@@ -20,7 +22,12 @@ export class HomeComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {}
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiService,
+    private router: Router,
+    private shareData: ShareDataService
+  ) {}
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -28,6 +35,7 @@ export class HomeComponent implements OnInit {
       companyName: ['', Validators.required],
       country: ['']
     });
+    console.log('loader', this.loader);
   }
 
   onSubmit(form: FormGroup) {
@@ -37,15 +45,27 @@ export class HomeComponent implements OnInit {
     this.loader = true;
     this.apiService
       .getData(form.value.companyName, form.value.country)
-      .subscribe(data => {
-        this.loader = false;
-        console.log('data', data);
-        this.dataSource = data['results'];
-      });
+      .subscribe(
+        data => {
+          this.loader = false;
+          console.log('data', data);
+          this.dataSource = data['results'];
+        },
+        err => {
+          this.loader = false;
+          console.log('err', err);
+        }
+      );
   }
 
   showGraph(data: any) {
+    this.router.navigate([`/graph`]);
+    this.orgkey = data;
     console.log('Graph data', data);
+  }
+
+  ngOnDestroy() {
+    this.shareData.node = this.orgkey;
   }
 }
 
